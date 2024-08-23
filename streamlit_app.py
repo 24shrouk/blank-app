@@ -1,15 +1,27 @@
 import streamlit as st
 import pickle
+import numpy as np
 
-st.title("🎈 Cars")
-f1=st.number_input('feature 1',min_value=1,max_value=10,value=1)
-f2=st.number_input('feature 2',min_value=1,max_value=10,value=1)
-f3=st.number_input('feature 3',min_value=1,max_value=100,value=1)
+# Load your model (adjust the path accordingly)
+model_path = 'your_model_file.pkl'
+with open(model_path, 'rb') as model_file:
+    model = pickle.load(model_file)
 
+# Title of the app
+st.title("Model Prediction")
 
-with open('model (1).pkl','rb') as file:
-  model = pickle.load(file)
-res=model.predict([[f1,f2,f3]])
+# Input features
+feature1 = st.text_input("Enter Feature 1:")
+feature2 = st.text_input("Enter Feature 2:")
+feature3 = st.text_input("Enter Feature 3:")
 
-
-st.write('Result : ',res[0][0])
+# Button for prediction
+if st.button("Predict"):
+    # Convert features to a numpy array
+    features = np.array([[float(feature1), float(feature2), float(feature3)]])
+    
+    # Make prediction
+    prediction = model.predict(features)
+    
+    # Display the prediction
+    st.write(f"The predicted value is: {prediction[0]}")
