@@ -8,7 +8,7 @@ with open(model_path, 'rb') as model_file:
     model = pickle.load(model_file)
 
 # Title of the app
-st.title("Model Prediction")
+st.title("Car Model Prediction")
 
 # Input features
 feature1 = st.text_input("Enter Feature 1:")
@@ -24,4 +24,4 @@ if st.button("Predict"):
     prediction = model.predict(features)
     
     # Display the prediction
-    st.write(f"The predicted value is: {prediction[0]}")
+    st.write(f"The predicted value is : {prediction[0]}")
