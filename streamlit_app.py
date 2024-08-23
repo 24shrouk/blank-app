@@ -12,4 +12,4 @@ with open('model (1).pkl','rb') as file:
 res=model.predict([[f1,f2,f3]])
 
 
-st.write(res[0][0])
+st.write('Result : ',res[0][0])
