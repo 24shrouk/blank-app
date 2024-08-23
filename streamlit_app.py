@@ -10,3 +10,6 @@ f3=st.number_input('feature 3',min_value=1,max_value=100,value=1)
 with open('model (1).pkl','rb') as file:
   model = pickle.load(file)
 res=model.predict([[f1,f2,f3]])
+
+
+st.write(res[0][0])
